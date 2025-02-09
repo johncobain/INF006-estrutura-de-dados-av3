@@ -11,6 +11,9 @@ int main(){
     
     FILE *fp_test2 = fopen("L0Q2.out", "r");
     FILE *fp_res2 = fopen("./X2/L0Q2.out", "r");
+    
+    FILE *fp_test3 = fopen("L0Q3.out", "r");
+    FILE *fp_res3 = fopen("./X2/L0Q3.out", "r");
 
     printf("\033[1;34m--------TESTE 1--------\033[0m\n");
     if (fp_test1 == NULL || fp_res1 == NULL){
@@ -33,6 +36,17 @@ int main(){
     
     fclose(fp_test2);
     fclose(fp_res2);
+
+    printf("\n\033[1;34m--------TESTE 3--------\033[0m\n");
+    if (fp_test3 == NULL || fp_res3 == NULL){
+        printf("Arquivos nao podem ser abertos.");
+        return EXIT_FAILURE;
+    }
+
+    isEqual(fp_test3, fp_res3);
+    
+    fclose(fp_test3);
+    fclose(fp_res3);
     return EXIT_SUCCESS;
 }
 
