@@ -5,15 +5,15 @@
 void isEqual(FILE *fp_test, FILE *fp_res);
 
 int main(){
-    FILE *fp_test1 = fopen("L0Q1.out", "r");
-    FILE *fp_res1 = fopen("./X2/L0Q1.out", "r");
+    FILE *fp_test1 = fopen("L2Q1.out", "r");
+    FILE *fp_res1 = fopen("./X2/L2Q1.out", "r");
     
     
-    FILE *fp_test2 = fopen("L0Q2.out", "r");
-    FILE *fp_res2 = fopen("./X2/L0Q2.out", "r");
+    FILE *fp_test2 = fopen("L2Q2.out", "r");
+    FILE *fp_res2 = fopen("./X2/L2Q2.out", "r");
     
-    FILE *fp_test3 = fopen("L0Q3.out", "r");
-    FILE *fp_res3 = fopen("./X2/L0Q3.out", "r");
+    FILE *fp_test3 = fopen("L2Q3.out", "r");
+    FILE *fp_res3 = fopen("./X2/L2Q3.out", "r");
 
     printf("\033[1;34m--------TESTE 1--------\033[0m\n");
     if (fp_test1 == NULL || fp_res1 == NULL){
@@ -54,14 +54,16 @@ void isEqual(FILE *fp_test, FILE *fp_res){
     char equal = 1;
     char lineTest[1000];
     char lineRes[1000];
+    int lineCount = 0;
     while (fgets(lineTest, sizeof(lineTest), fp_test) != NULL){
+        lineCount++;
         if (fgets(lineRes, sizeof(lineRes), fp_res) != NULL){
-            printf("T: %s", lineTest);
+            printf("T: %s\n", lineTest);
             printf("R: %s\n", lineRes);
             if (strcmp(lineTest, lineRes) == 0){
-                printf("\033[1;32mA linha é igual.\033[0m\n\n");
+                printf("\033[1;32mA linha %d é igual.\033[0m\n\n", lineCount);
             }else{
-                printf("\033[1;33mA linha nao é igual.\033[0m\n\n");
+                printf("\033[1;33mA linha %d nao é igual.\033[0m\n\n", lineCount);
                 equal = 0;
             }
         }else{
